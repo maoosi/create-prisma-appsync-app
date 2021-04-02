@@ -10,6 +10,5 @@
     "scripts": {
         "pretest": "rm -rf tmp",
         "test": "node ./bin/cli.js tmp"
-    },
-    "devDependencies": {}
+    }
 }
