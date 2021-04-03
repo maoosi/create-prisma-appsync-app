@@ -1,7 +1,7 @@
 {
     "name": "create-prisma-appsync-app",
     "description": "Prisma-AppSync boilerplate generator.",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0-beta.3",
     "dependencies": {
         "cac": "^6.7.2",
         "sao": "^1.7.1"
