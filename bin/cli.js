@@ -12,7 +12,7 @@ cli
         const sao = require('sao')
 
         const app = sao({
-            generator: 'maoosi/prisma-appsync',
+            generator: 'maoosi/prisma-appsync#main',
             outDir: targetFolder,
             npmClient: pm
         })
