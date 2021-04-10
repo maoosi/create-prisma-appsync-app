@@ -14,14 +14,26 @@ cli
         `Choose a generator ('maoosi/prisma-appsync#next' | './my-local-prisma-appsync')`,
         { default: 'maoosi/prisma-appsync#main' }
     )
-    .action(async (targetFolder, { pm, generator }) => {
+    .option(
+        '--test <local-directory>',
+        `Testing mode w/ local Prisma-AppSync ('./my-local-prisma-appsync')`,
+        { default: 'maoosi/prisma-appsync#main' }
+    )
+    .action(async (targetFolder, { pm, generator, test }) => {
         const sao = require('sao')
 
-        const app = sao({
+        const options = {
             generator: generator,
             outDir: targetFolder,
             npmClient: pm
-        })
+        }
+
+        if (typeof test !== 'undefined') {
+            options.generator = test
+            options.testingMode = true
+        }
+
+        const app = sao(options)
 
         await app.run().catch(sao.handleError)
     })
