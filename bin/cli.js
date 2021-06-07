@@ -15,9 +15,8 @@ cli
         { default: 'maoosi/prisma-appsync#main' }
     )
     .option(
-        '--test <local-directory>',
-        `Testing mode w/ local Prisma-AppSync ('./my-local-prisma-appsync')`,
-        { default: 'maoosi/prisma-appsync#main' }
+        '--test',
+        `TEST mode w/ local Prisma-AppSync directory`
     )
     .action(async (targetFolder, { pm, generator, test }) => {
         const sao = require('sao')
@@ -29,8 +28,11 @@ cli
         }
 
         if (typeof test !== 'undefined') {
-            options.generator = test
+            console.log(`Running using TEST mode.`)
             options.testingMode = true
+            options.testingTimestamp = new Date().getTime()
+            options.outDir = `prisma-appsync-testapp-${options.testingTimestamp}`
+            options.generator = `./prisma-appsync`
         }
 
         const app = sao(options)
